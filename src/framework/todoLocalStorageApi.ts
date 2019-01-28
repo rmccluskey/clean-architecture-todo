@@ -3,7 +3,7 @@ import { TodoList } from "../entities/todoList";
 
 export class TodoLocalStorageApi implements TodoApi {
     async getTodos(): Promise<TodoList> {
-        let todoList = window.localStorage.getItem("todoList");
+        const todoList = window.localStorage.getItem("todoList");
         if (!todoList) {
             throw Error("cannot load todos");
         }
