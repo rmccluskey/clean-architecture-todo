@@ -5,7 +5,7 @@ export class TodoLocalStorageApi implements TodoApi {
     async getTodos(): Promise<TodoList> {
         let todoList = window.localStorage.getItem("todoList");
         if (!todoList) {
-            throw Error;
+            throw Error("cannot load todos");
         }
         return JSON.parse(todoList);
     }

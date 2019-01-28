@@ -7,20 +7,20 @@ export class TodoInteractor {
 
     async getTodoList(): Promise<TodoList.TodoList> {
         try {
-            return this.todoApi.getTodos();
+            return await this.todoApi.getTodos();
         } catch (e) {
             let todoList = TodoList.create();
-            return this.todoApi.saveTodos(todoList);
+            return await this.todoApi.saveTodos(todoList);
         }
     }
 
     async addTodo(todoList: TodoList.TodoList, title: string): Promise<TodoList.TodoList> {
         let updatedTodoList = TodoList.addTodo(todoList, title);
-        return this.todoApi.saveTodos(updatedTodoList);
+        return await this.todoApi.saveTodos(updatedTodoList);
     }
 
     async toggleTodo(todoList: TodoList.TodoList, todo: Todo): Promise<TodoList.TodoList> {
         let updatedTodoList = TodoList.toggleTodo(todoList, todo);
-        return this.todoApi.saveTodos(updatedTodoList);
+        return await this.todoApi.saveTodos(updatedTodoList);
     }
 }
