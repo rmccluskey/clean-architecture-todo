@@ -7,6 +7,11 @@ export function create(): TodoList {
 }
 
 export function addTodo(todoList: TodoList, title: string): TodoList {
+    const todoExists = todoList.some(todo => Todo.title(todo) === title);
+    if (todoExists) {
+        throw Error("There is already a Todo with that title!");
+    }
+
     return [
         ...todoList,
         Todo.create(title)
